@@ -37,7 +37,22 @@ resource "aws_nat_gateway" "NAT" {
     Name      = "NAT "
   }
 }
+resource "aws_route_table" "private_route_table" {
+  vpc_id = aws_vpc.johans-vpc.id
+}
 
+# Create a route in the private route table to the NAT Gateway
+resource "aws_route" "private_route" {
+  route_table_id            = aws_route_table.private_route_table.id
+  destination_cidr_block    = "0.0.0.0/0"
+  nat_gateway_id            = aws_nat_gateway.NAT.id
+}
+
+# Associate private route table with private subnet
+resource "aws_route_table_association" "private_route_table_association" {
+  subnet_id      = aws_subnet.private_subnets[0].id
+  route_table_id = aws_route_table.private_route_table.id
+}
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.johans-vpc.id
