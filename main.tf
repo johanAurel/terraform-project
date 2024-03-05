@@ -9,6 +9,8 @@ module "security" {
   vpc_id = module.vpc.vpc_id
 }
 
-output "security_group_ids" {
-  value = module.security.security_group_ids
+module "dynamo_DB" {
+source = "./modules/dynamoDB"
+
 }
+
