@@ -1,3 +1,3 @@
-output "security_group_ids" {
-  value = module.security.security_group_ids
-}
+output "instaces" {
+  value = module.instance.instance_id
+  }

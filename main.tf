@@ -11,6 +11,12 @@ module "security" {
 
 module "dynamo_DB" {
 source = "./modules/dynamoDB"
+}
+
+module "instance" {
+  source = "./modules/instaces"
+  security_group_ids = module.security.security_group_ids
+  subnet_id = module.vpc.public_subnet_id
 
 }
 
