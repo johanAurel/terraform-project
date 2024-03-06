@@ -16,37 +16,42 @@ data "aws_ami" "ubuntu" {
 // lighting, heating , status
 resource "aws_instance" "lighting" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
  security_groups = var.security_group_ids
  subnet_id =  element(var.subnet_id, 0)
+ key_name = var.key_name
   tags = {
     Name = "lighting"
   }
 }
 resource "aws_instance" "heating" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
  security_groups = var.security_group_ids
  subnet_id = element(var.subnet_id, 1)
+ key_name = var.key_name
   tags = {
     Name = "heating"
   }
 }
 resource "aws_instance" "status" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
  security_groups = var.security_group_ids
  subnet_id = element(var.subnet_id, 2)
+ key_name = var.key_name
   tags = {
     Name = "status"
   }
 }
 resource "aws_instance" "auth" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
  security_groups = var.security_group_ids
- subnet_id =  element(var.subnet_id, 0)
+ subnet_id = var.private_subnet
+ key_name = var.key_name
   tags = {
     Name = "auth"
   }
 }
+
