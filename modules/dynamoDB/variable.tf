@@ -1,7 +1,7 @@
 
 variable "key" {
-  type = list(string)
-  default = [ "id", "id" ]
+  type = string
+  default = "id"
 }
 
 variable "table" {
