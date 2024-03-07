@@ -17,7 +17,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "lighting" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
- security_groups = var.security_group_ids
+  vpc_security_group_ids =  var.security_group_ids
  subnet_id =  element(var.subnet_id, 0)
  key_name = var.key_name
   tags = {

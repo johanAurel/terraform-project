@@ -1,5 +1,6 @@
 resource "aws_vpc" "johans-vpc" {
   cidr_block = "10.0.0.0/20"
+  
 }
 
 resource "aws_subnet" "public_subnets" {
