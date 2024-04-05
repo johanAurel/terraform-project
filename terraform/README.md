@@ -6,7 +6,7 @@ So far we have encountered a lot of different pieces of the Terraform journey in
 
 Your project tasks will be delivered via the L2C platform.
 
-You can find this sprint [here.](https://l2c.northcoders.com/courses/ce-provisioning/terraform-project)
+
 
 ## Requirements
 
